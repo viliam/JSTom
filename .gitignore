@@ -1,2 +1,7 @@
 .idea
 *.iml
+
+JSTom-model\target
+JSTom-service\target
+JSTom-share\target
+JSTom-web\target

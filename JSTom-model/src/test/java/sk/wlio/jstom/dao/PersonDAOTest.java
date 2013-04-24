@@ -41,6 +41,6 @@ public class PersonDAOTest {
         assertNotNull( pA);
         assertEquals("Karol", p.getName());
         assertEquals(12, p.getAge().longValue());
-        assertEquals( 0, p.getAdresses());
+        assertNull(  p.getAddresses());
     }
 }

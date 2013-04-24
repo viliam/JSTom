@@ -1,10 +1,19 @@
 package sk.wlio.jstom.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Adress {
+public class Address {
+
+    @TableGenerator(
+        name="addressGen",
+        table="ID_GENENERATOR",
+        pkColumnName="GEN_KEY",
+        valueColumnName="GEN_VALUE",
+        pkColumnValue="ADDRESS_ID",
+        allocationSize=1)
+    @Id
+    @GeneratedValue(strategy= GenerationType.TABLE, generator="addressGen")
 
     private Long id;
 

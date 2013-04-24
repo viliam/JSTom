@@ -1,15 +1,21 @@
 package sk.wlio.jstom.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Person {
 
+    @TableGenerator(
+        name="personGen",
+        table="ID_GENENERATOR",
+        pkColumnName="GEN_KEY",
+        valueColumnName="GEN_VALUE",
+        pkColumnValue="PERSON_ID",
+        allocationSize=1)
     @Id
+    @GeneratedValue(strategy=GenerationType.TABLE, generator="personGen")
     private Long id;
 
     private String name;
@@ -17,7 +23,7 @@ public class Person {
     private Integer age;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Adress> adresses;
+    private List<Address> addresses;
 
     public Long getId() {
         return id;
@@ -27,12 +33,12 @@ public class Person {
         this.id = id;
     }
 
-    public List<Adress> getAdresses() {
-        return adresses;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setAdresses(List<Adress> adresses) {
-        this.adresses = adresses;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public Integer getAge() {
